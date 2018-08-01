@@ -3,21 +3,28 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-test',
   template: `
-    <h2>
+  <h2>
     Welcome {{name}}
-    </h2>
-    <h2>{{2+2}}</h2>
-    <h2 class="text-success">{{"Welcome " + name }}</h2>
-    <h2>{{name.length}}</h2>
-    <h2 [class]="successClass">{{name.toUpperCase()}}</h2>
-    <h2 [class.text-danger]="hasError">{{siteUrl}}</h2>
-    <h2 [ngClass]="messageClasses">{{greetUser()}}</h2>
-    
-    <input [id]="myID" type="text" value="Nitish">
-    <input  [disabled]="isDisabled" id="{{myID}}" type="text" value="Kumar">
-    <input  bind-disabled="isDisabled" id="{{myID}}" type="text" value="Kumar">
+  </h2>
 
-    `,
+  <!-- class attribute -->
+  <h2 class="text-success">
+    Codevolution
+  </h2>
+
+  <h2 [class]="successClass">
+    Codevolution
+  </h2>
+
+  <h2 [class.text-danger]="!hasError">
+    Codevolution
+  </h2>
+
+  <h2 [ngClass]="messageClass">
+    Codevolution
+  </h2>
+
+  `,
   styles: [`
   .text-success {
     color: green;
@@ -33,13 +40,16 @@ import { Component, OnInit } from '@angular/core';
 export class TestComponent implements OnInit {
 
   public name = "Nitish Kumar"
-  public siteUrl = window.location.href;
-  public myID = "testID";
-  public isDisabled = true;
+
+  // To use class binding however we need to declare new property and assign and assign to 
+  // it the class name. Then in the template we can use the square bracket syntax i.e []
+  // to bind the class.
+
   public successClass = "text-success";
   public hasError = false;
   public isSpecial = true;
-  public messageClasses = {
+
+  public messageClass = {
     "text-success": !this.hasError,
     "text-danger": this.hasError,
     "text-special": this.isSpecial
@@ -49,9 +59,4 @@ export class TestComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  greetUser(){
-    return "Hello " + this.name;
-  }
-
 }
