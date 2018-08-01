@@ -6,16 +6,17 @@ import { Component, OnInit } from '@angular/core';
     <h2>
     Welcome {{name}}
     </h2>
-    <h2>{{2+2}}</h2>
-    <h2 class="text-success">{{"Welcome " + name }}</h2>
-    <h2>{{name.length}}</h2>
-    <h2 [class]="successClass">{{name.toUpperCase()}}</h2>
-    <h2 [class.text-danger]="hasError">{{siteUrl}}</h2>
-    <h2 [ngClass]="messageClasses">{{greetUser()}}</h2>
+
+    <h2 [style.color]="'blue'">Style Binding 1</h2>
     
-    <input [id]="myID" type="text" value="Nitish">
-    <input  [disabled]="isDisabled" id="{{myID}}" type="text" value="Kumar">
-    <input  bind-disabled="isDisabled" id="{{myID}}" type="text" value="Kumar">
+    <!-- Conditional operator -->
+
+    <h2 [style.color]="hasError ? 'red' : 'green'">Style Binding 2</h2>
+
+    <h2 [style.color]="highlightColor">Style Binding 3</h2>
+
+    <h2 [ngStyle]="titleStyles">Style Binding 4</h2>
+
 
     `,
   styles: [`
@@ -33,16 +34,12 @@ import { Component, OnInit } from '@angular/core';
 export class TestComponent implements OnInit {
 
   public name = "Nitish Kumar"
-  public siteUrl = window.location.href;
-  public myID = "testID";
-  public isDisabled = true;
-  public successClass = "text-success";
-  public hasError = false;
-  public isSpecial = true;
-  public messageClasses = {
-    "text-success": !this.hasError,
-    "text-danger": this.hasError,
-    "text-special": this.isSpecial
+  public hasError = true;
+  public highlightColor = "orange";
+
+  public titleStyles = {
+    color: "blue",
+    fontStyle: "italic"
   }
 
   constructor() { }
