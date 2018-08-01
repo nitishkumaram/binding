@@ -1,7 +1,7 @@
 # Branches
 
-Master -> Tutorial 1 to 6
-MyBranch -> Tutorial 7
+* Master -> Tutorial 1 to 6
+* MyBranch -> Tutorial 7
 
 # Binding
 
